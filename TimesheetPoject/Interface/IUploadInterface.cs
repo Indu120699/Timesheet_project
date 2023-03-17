@@ -7,8 +7,5 @@ namespace TimesheetPoject.Interface
     {
         public IActionResult add(UploadModel[] entries);
         public IActionResult add1(EmployeeModel[] entries);
-        List<UploadModel> GetTimesheetsByUserId(int userId);
-        List<EmployeeModel> GetEmpDet(int userId);
-
     }
 }
