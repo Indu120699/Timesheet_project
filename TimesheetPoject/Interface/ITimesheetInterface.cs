@@ -5,7 +5,7 @@ namespace TimesheetPoject.Interface
 {
     public interface ITimesheetInterface
     {
-        public IActionResult Regester(RegistrationModel regestrationModel);
+        public IActionResult Regester(RegestrationModel regestrationModel);
         public IActionResult Login(LoginModel loginModel);
         public IActionResult ResetPassword(LoginModel loginModel);
 

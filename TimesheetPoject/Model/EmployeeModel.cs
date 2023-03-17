@@ -7,13 +7,13 @@ namespace TimesheetPoject.Model
         [Key]
         public int Id { get; set; }
 
-        public string user_id { get; set; }
+
         public string Employee_Name { get; set; }
         [EmailAddress]
         public string Employee_Email { get; set; }
 
         public DateTime Joining_date { get; set; }
 
-        public int Phone_Number { get; set; }
+        public string Phone_Number { get; set; }
     }
 }

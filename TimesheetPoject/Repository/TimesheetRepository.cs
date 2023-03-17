@@ -21,7 +21,7 @@ namespace TimesheetPoject.Repository
             _timesheet_Context = timesheet_Context;
             _configuration = configuration;
         }
-        public IActionResult Regester(RegistrationModel regestrationModel)
+        public IActionResult Regester(RegestrationModel regestrationModel)
         {
             _timesheet_Context.Register.Add(regestrationModel);
             _timesheet_Context.SaveChanges();
@@ -33,7 +33,7 @@ namespace TimesheetPoject.Repository
             
             List<Claim> claims = new List<Claim>
             {
-                    new Claim(ClaimTypes.Name, loginModel.UserId)
+                    new Claim(ClaimTypes.Name, loginModel.Username)
             };
             var newKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(
            _configuration.GetSection("AppSettings:Token").Value!));
@@ -44,9 +44,11 @@ namespace TimesheetPoject.Repository
         }
         public IActionResult ResetPassword(LoginModel loginModel)
         {
-            var name = _timesheet_Context.Register.FirstOrDefault(i => i.UserId == loginModel.UserId);
-            name.UserId = loginModel.UserId;
-            name.Password= loginModel.Password;       
+            var name = _timesheet_Context.Register.FirstOrDefault(i => i.Username== loginModel.Username);
+            name.Username = loginModel.Username;
+            name.Password= loginModel.Password;
+            name.Email=  loginModel.Email;
+            name.Confirmpassword = loginModel.Confirmpassword;
             string passwordHash = BCrypt.Net.BCrypt.HashPassword(loginModel.Password);
             name.HashKeyPassword = passwordHash;
             _timesheet_Context.Register.Update(name);
