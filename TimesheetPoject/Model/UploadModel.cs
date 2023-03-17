@@ -15,12 +15,7 @@ namespace TimesheetPoject.Model
         public string Status { get; set; }
 
         public int total_hours { get; set; }
-
-        [ForeignKey("user_id")]
-        public int user_id { get; set; }
-
-
-        public DateTime Date { get; set; }
+       public DateTime Date { get; set; }
 
         public string month { get; set; }
     }
